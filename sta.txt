@@ -1,0 +1,16 @@
+1) What the report gives you (again)
+
+Constrained clock period = 10.000 ns (100 MHz).
+
+WNS (setup) = +0.501 ns → you have 0.501 ns of setup margin.
+
+WHS (hold) = +0.020 ns → hold passes but margin is small (20 ps).
+
+2) Theoretical fastest clock from WNS (digit-by-digit)
+
+We compute the minimum achievable period by subtracting WNS from the constrained period, then convert to frequency.
+
+min_period = 10.000 ns - 0.501 ns = 9.499 ns
+
+Fmax_theoretical = 1 / 9.499e-9 s = 1e9 / 9.499 ≈ 105,274,239.39 Hz
+→ Fmax ≈ 105.27 MHz (theoretical — must verify by re-implementing).

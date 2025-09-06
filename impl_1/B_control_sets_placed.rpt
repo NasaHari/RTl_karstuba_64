@@ -1,0 +1,103 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
+| Date         : Thu Sep  4 23:47:31 2025
+| Host         : DESKTOP-5HKO2DV running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file B_control_sets_placed.rpt
+| Design       : B
+| Device       : xc7z020
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    25 |
+|    Minimum number of control sets                        |    25 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    66 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    25 |
+| >= 0 to < 4        |     0 |
+| >= 4 to < 6        |     2 |
+| >= 6 to < 8        |     0 |
+| >= 8 to < 10       |     1 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     1 |
+| >= 16              |    21 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |               0 |            0 |
+| No           | No                    | Yes                    |              65 |           22 |
+| No           | Yes                   | No                     |               0 |            0 |
+| Yes          | No                    | No                     |            1320 |          469 |
+| Yes          | No                    | Yes                    |             837 |          284 |
+| Yes          | Yes                   | No                     |               0 |            0 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++----------------+----------------------------------+------------------+------------------+----------------+--------------+
+|  Clock Signal  |           Enable Signal          | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------+----------------------------------+------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG | kar_inst/sending_reg[0]          | rst_IBUF         |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | byte_idx[3]_i_1_n_0              | rst_IBUF         |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | Data_out[7]_i_1_n_0              | rst_IBUF         |                4 |              8 |         2.00 |
+|  clk_IBUF_BUFG | valid_stage1_i_1_n_0             | rst_IBUF         |                6 |             14 |         2.33 |
+|  clk_IBUF_BUFG |                                  | rst_IBUF         |               22 |             65 |         2.95 |
+|  clk_IBUF_BUFG | kar_inst/k0/P_reg                | rst_IBUF         |               17 |             68 |         4.00 |
+|  clk_IBUF_BUFG | kar_inst/k1/P_reg                | rst_IBUF         |               17 |             68 |         4.00 |
+|  clk_IBUF_BUFG | kar_inst/k2/P_reg                | rst_IBUF         |               17 |             68 |         4.00 |
+|  clk_IBUF_BUFG | kar_inst/prod_wr_ptr_reg[0]_0[0] |                  |               32 |            101 |         3.16 |
+|  clk_IBUF_BUFG | kar_inst/prod_wr_ptr_reg[2][0]   |                  |               36 |            101 |         2.81 |
+|  clk_IBUF_BUFG | kar_inst/prod_wr_ptr_reg[1]_0[0] |                  |               37 |            101 |         2.73 |
+|  clk_IBUF_BUFG | kar_inst/prod_wr_ptr_reg[1]_3[0] |                  |               37 |            101 |         2.73 |
+|  clk_IBUF_BUFG | kar_inst/prod_wr_ptr_reg[1]_2[0] |                  |               31 |            101 |         3.26 |
+|  clk_IBUF_BUFG | kar_inst/prod_wr_ptr_reg[1]_1[0] |                  |               40 |            101 |         2.53 |
+|  clk_IBUF_BUFG | kar_inst/prod_wr_ptr_reg[2]_0[0] |                  |               33 |            101 |         3.06 |
+|  clk_IBUF_BUFG | kar_inst/P_reg                   | rst_IBUF         |               29 |            101 |         3.48 |
+|  clk_IBUF_BUFG | kar_inst/E[0]                    |                  |               35 |            101 |         2.89 |
+|  clk_IBUF_BUFG | prod_rd_ptr[2]_i_1_n_0           | rst_IBUF         |               60 |            106 |         1.77 |
+|  clk_IBUF_BUFG | fifo_num1[2][63]_i_1_n_0         |                  |               51 |            128 |         2.51 |
+|  clk_IBUF_BUFG | fifo_num1[0][63]_i_1_n_0         |                  |               44 |            128 |         2.91 |
+|  clk_IBUF_BUFG | fifo_num1[1][63]_i_1_n_0         |                  |               45 |            128 |         2.84 |
+|  clk_IBUF_BUFG | fifo_num1[3][63]_i_1_n_0         |                  |               48 |            128 |         2.67 |
+|  clk_IBUF_BUFG | kar_start                        | rst_IBUF         |               53 |            128 |         2.42 |
+|  clk_IBUF_BUFG | valid_stage2                     | rst_IBUF         |               37 |            134 |         3.62 |
+|  clk_IBUF_BUFG | valid_stage1                     | rst_IBUF         |               42 |            134 |         3.19 |
++----------------+----------------------------------+------------------+------------------+----------------+--------------+
+
+
