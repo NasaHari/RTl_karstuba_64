@@ -16,7 +16,7 @@ module B(
     reg [63:0] number2;
     reg [5:0] bit_count;
     reg storing;
-    reg [2:0] fifo_count;         // number of entries in FIFO
+    reg [2:0] fifo_count;        
 
     // ---------- Stage 1 ----------
     reg [3:0] in1_stage1, in2_stage1;
@@ -32,14 +32,14 @@ module B(
             valid_stage1 <= 1'b0;
         end else begin
             if (start && fifo_count<4) begin
-                // 🚀 First nibble captured immediately
+                //  First nibble captured immediately
                 storing      <= 1'b1;
                 count_stage1 <= 6'd1;   // first nibble index
                 in1_stage1   <= Data_in1;
                 in2_stage1   <= Data_in2;
                 valid_stage1 <= 1'b1;
             end else if (storing) begin
-                // 🚀 Subsequent nibbles
+                //  Subsequent nibbles
                 in1_stage1   <= Data_in1;
                 in2_stage1   <= Data_in2;
                 count_stage1 <= count_stage1 + 1;
@@ -159,23 +159,6 @@ always_ff @(posedge clk or posedge rst) begin
 end
 
   
-    // Final output combine (optional)
-
-
-
-// always @(posedge clk or posedge rst) begin
-//     if (rst) begin
-//         fifo_rd_ptr <= 0;
-//         Data_out_reg <= 0;
-//     end else if (fifo_count > 0) begin
-//         // Example: multiply numbers and output
-//      	 Data_out_reg <={ fifo_num1[fifo_rd_ptr] , fifo_num2[fifo_rd_ptr]};
-//      	 $display("FIFO READ / Data_out: ptr=%d Data_out=%h count=%d",
-//                   fifo_rd_ptr, Data_out_reg, fifo_count-1);
-//         fifo_rd_ptr <= fifo_rd_ptr + 1;
-//         fifo_count <= fifo_count - 1;
-//     end
-// end
 logic [127:0] product;
 logic valid_product;     // connected to kar_inst.valid_out
 logic [63:0] kar_A, kar_B;
@@ -194,7 +177,6 @@ logic [$clog2(PROD_FIFO_DEPTH)-1:0] prod_wr_ptr, prod_rd_ptr;
 logic [$clog2(PROD_FIFO_DEPTH):0]   prod_count;  // needs +1 bit for full/empty
 
 
-// connect kar_inst to kar_start and captured operands
 karatsuba64 kar_inst (
     .clk(clk),
     .rst(rst),
@@ -248,7 +230,6 @@ always @(posedge clk or posedge rst) begin
                 // we already pulsed kar_start for 1 cycle in previous state; here we wait
                    //> $display("[FSM] %0t WAIT_DONE: waiting for valid_product=%b", $time, valid_product);              
                       if (valid_product) begin
-                    // latch product into output register
                    
 
                     
